@@ -38,11 +38,7 @@ reach_proxy(C1,C2,D) :- reach(C1,C2,D,[]).
 reach(C1,C2,[D], _) :- adjacent(C1,D,C2), (at(C2, E), E \= wall; empty(C2)).
 reach(C1,C2,[D|Ds],P) :- append(P,[C1],Ps), adjacent(C1,D,CM), not(member(CM,Ps)), (at(CM, E), E \= wall; empty(CM)), reach(CM,C2,Ds,Ps).
 
-
-reach_proxy(C1,C2, D) :- reach(C1,C2,D,[]).
-reach(C1,C2,[D], _) :- adjacent(C1,D,C2), (at(C2, E), E \= wall; empty(C2)).
-reach(C1,C2,[D|Ds],P) :- append(P,[C1],Ps), adjacent(C1,D,CM), not(member(CM,Ps)), (at(CM, E), E \= wall; empty(CM)), reach(CM,C2,Ds,Ps).
-
 reach_proxy(C1,C2) :- reach(C1,C2,[]).
 reach(C1,C2, _) :- adjacent(C1,D,C2), (at(C2, E), E \= wall; empty(C2)).
 reach(C1,C2,P) :- append(P,[C1],Ps), adjacent(C1,_,CM), not(member(CM,Ps)), (at(CM, E), E \= wall; empty(CM)), reach(CM,C2,Ps).reach_proxy(C1,C2,D) :- reach(C1,C2,D,[]).
+
