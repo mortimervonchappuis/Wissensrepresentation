@@ -13,7 +13,7 @@ visible(C1, C3, D) :- adjacent(C2, D, C3), not(at(C2, wall)), visible(C1, C2, D)
 reachable(C1, C2, Ds) :- reach(C1, C2, Ds, []).
 
 reach(C1, C2, [D], _) :- adjacent(C1, D, C2), trespass(C2).
-reach(C1, C3, [D|Ds], Ps) :- append(Ps, [C1], Ps_), adjacent(C1, D, C2), not(member(C2, Ps_)), trespass(C2), reach(C2, C3, Ds, Ps_).
+reach(C1, C3, [D|Ds], Nodes) :- append(Nodes, [C1], Nodes_), adjacent(C1, D, C2), not(member(C2, Nodes_)), trespass(C2), reach(C2, C3, Ds, Nodes_).
 
 goalachivement(A, B, C, D) :- ghost(A), pacman(B) , capsule(C), food(D).
 
@@ -28,8 +28,6 @@ capsule(no_capsule) :- not(at(_, capsule)).
 
 food(food) :- at(_, food).
 food(no_food) :- not(at(_, food)).
-
-
 
 % empty(cell(2, 9)).
 % empty(cell(2, 8)).
