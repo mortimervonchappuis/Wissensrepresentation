@@ -3,7 +3,8 @@
 maze_0() :- load_layout(maze_0).
 maze_1() :- load_layout(maze_1).
 
-empty(C) :- not(at(C, _)).
+empty(cell(X, Y)) :- not(at(cell(X, Y), _)).
+% empty(C) :- not(at(C, _)).
 
 trespass(C) :- (at(C, E), not(E = wall); empty(C)).
 
@@ -15,7 +16,7 @@ reachable(C1, C2, Ds) :- reach(C1, C2, Ds, []).
 reach(C1, C2, [D], _) :- adjacent(C1, D, C2), trespass(C2).
 reach(C1, C3, [D|Ds], Nodes) :- append(Nodes, [C1], Nodes_), adjacent(C1, D, C2), not(member(C2, Nodes_)), trespass(C2), reach(C2, C3, Ds, Nodes_).
 
-goalachivement(A, B, C, D) :- ghost(A), pacman(B) , capsule(C), food(D).
+goalachievement(A, B, C, D) :- ghost(A), pacman(B) , capsule(C), food(D).
 
 ghost(ghost) :- at(_, ghost).
 ghost(no_ghost) :- not(at(_, ghost)).
