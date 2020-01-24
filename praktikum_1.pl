@@ -180,7 +180,7 @@ relation(X, Y, sisterinlaw) :- sisterinlaw(X, Y).
 relation(X, Y, uncle) :- uncle(X, Y).
 relation(X, Y, aunt) :- aunt(X, Y).
 
-cousin(X, Y, N, M) :- horizontal(X, Y, N_), vertical(X, Y, M), N is N_-1, !     .
+cousin(X, Y, N_, M) :- horizontal(X, Y, N_), vertical(X, Y, M), N_.% is N_-1.%, !     .
 
 
 % rel(daugher).
